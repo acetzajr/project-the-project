@@ -1,7 +1,10 @@
 #include "init.h"
 #include "state.h"
 #include "error.h"
+#include "space.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <SDL3/SDL.h>
 
 bool init()
 {
@@ -32,6 +35,15 @@ bool init()
     if(!SDL_ShowWindow(state.sdl.window))
     {
         return sdl_error();
+    }
+    state.space.width = 256;
+    state.space.height = 128;
+    state.space.cells =
+        malloc(sizeof(cell_t) * state.space.width * state.space.height);
+    if(!state.space.cells)
+    {
+        fprintf(stderr, "!state.space.cells\n");
+        return false;
     }
     state.timing.past = SDL_GetTicks();
     state.running = true;

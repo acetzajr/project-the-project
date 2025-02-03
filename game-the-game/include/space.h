@@ -1,8 +1,5 @@
 #pragma once
 
-#define MAX_SPACE_WIDTH 256
-#define MAX_SPACE_HEIGHT 128
-
 typedef enum
 {
     OCCUPANT_NONE,
@@ -17,5 +14,7 @@ typedef struct
 
 typedef struct
 {
-    cell_t cells[MAX_SPACE_WIDTH][MAX_SPACE_HEIGHT];
+    int width;
+    int height;
+    cell_t *cells;
 } space_t;

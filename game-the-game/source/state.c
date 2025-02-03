@@ -17,6 +17,7 @@ const gamepad_t null_gamepad =
 
 state_t state = 
 {
+    .space = { .cells = nullptr },
     .sdl =
     {
         .window = nullptr,

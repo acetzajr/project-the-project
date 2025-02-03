@@ -1,10 +1,15 @@
 #include "state.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <SDL3/SDL.h>
 
 [[gnu::destructor]]
 void cleanup()
 {
+    if(state.space.cells)
+    {
+        free(state.space.cells);
+    }
     if(state.sdl.renderer)
     {
         SDL_DestroyRenderer(state.sdl.renderer);
@@ -21,7 +26,10 @@ void cleanup()
     {
         for(int player = 0; player < MAX_GAMEPADS; ++player)
         {
-            SDL_CloseGamepad(state.gamepads[player].sdl);
+            if(state.gamepads[player].connected)
+            {
+                SDL_CloseGamepad(state.gamepads[player].sdl);
+            }
         }
         SDL_Quit();
     }
