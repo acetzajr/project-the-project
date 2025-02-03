@@ -5,4 +5,4 @@ fi
 START=$(./scripts/seconds.sh)
 ./build/bin/$1
 END=$(./scripts/seconds.sh)
-echo "-- Running time: $(($END - $START)) seconds"
+echo "## Running time: $(($END - $START)) seconds"

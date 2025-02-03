@@ -1,4 +1,5 @@
 #include "state.h"
+#include "sprite.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL3/SDL.h>
@@ -6,6 +7,10 @@
 [[gnu::destructor]]
 void cleanup()
 {
+    if(state.sdl.error)
+    {
+        fprintf(stderr, "%s\n", SDL_GetError());
+    }
     if(state.space.cells)
     {
         free(state.space.cells);
@@ -18,9 +23,12 @@ void cleanup()
     {
         SDL_DestroyWindow(state.sdl.window);
     }
-    if(state.sdl.error)
+    for(int i = 0; i < SPRITE_COUNT; ++i)
     {
-        fprintf(stderr, "%s\n", SDL_GetError());
+        if(state.sprites[i].texture)
+        {
+            SDL_DestroyTexture(state.sprites[i].texture);
+        }
     }
     if(state.sdl.init)
     {

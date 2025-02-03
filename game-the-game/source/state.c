@@ -17,6 +17,21 @@ const gamepad_t null_gamepad =
 
 state_t state = 
 {
+    .sprites =
+    {
+        {
+            .name = SPRITE_SKY,
+            .path = "resources/game-the-game/sprites/sprite-sky.bmp"
+        },
+        {
+            .name = SPRITE_BLOCK,
+            .path = "resources/game-the-game/sprites/sprite-block.bmp"
+        },
+        {
+            .name = SPRITE_PLAYER,
+            .path = "resources/game-the-game/sprites/sprite-player.bmp"
+        },
+    },
     .space = { .cells = nullptr },
     .sdl =
     {

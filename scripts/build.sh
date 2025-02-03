@@ -7,4 +7,4 @@ if ! cmake --build build --config Debug --target all; then
   exit 1
 fi
 END=$(./scripts/millis.sh)
-echo "-- Build time: $(($END - $START)) milliseconds"
+echo "## Build time: $(($END - $START)) milliseconds"
