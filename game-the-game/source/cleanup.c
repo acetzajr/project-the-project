@@ -15,6 +15,10 @@ void cleanup()
     {
         free(state.space.cells);
     }
+    if(state.sdl.viewport)
+    {
+        SDL_DestroyTexture(state.sdl.viewport);
+    }
     if(state.sdl.renderer)
     {
         SDL_DestroyRenderer(state.sdl.renderer);

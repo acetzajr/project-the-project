@@ -40,7 +40,7 @@ bool load_sprites()
     {
         if(!load_sprite(&state.sprites[i]))
         {
-            return error("!load_sprite(&state.sprites[i])");
+            return error("load_sprite");
         }
     }
     return true;
@@ -51,32 +51,42 @@ bool init()
     printf("%s\n", SDL_GetRevision());
     if(!SDL_SetHint(SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS, "1"))
     {
-        return sdl_error(
-            "!SDL_SetHint(SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS,"
-            " \"1\")");
+        return sdl_error("SDL_SetHint");
     }
     state.sdl.init = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD);
     if(!state.sdl.init)
     {
-        return sdl_error("!state.sdl.init");
+        return sdl_error("SDL_Init");
     }
     state.sdl.window = SDL_CreateWindow("Game The Game", 1024, 512, SDL_WINDOW_HIDDEN);
     if(!state.sdl.window)
     {
-        return sdl_error("!state.sdl.window");
+        return sdl_error("SDL_CreateWindow");
     }
     state.sdl.renderer = SDL_CreateRenderer(state.sdl.window, nullptr);
     if(!state.sdl.renderer)
     {
-        return sdl_error("!state.sdl.renderer");
+        return sdl_error("SDL_CreateRenderer");
     }
     if(!SDL_SetRenderVSync(state.sdl.renderer, 1))
     {
-        return sdl_error("state.sdl.renderer, 1");
+        return sdl_error("SDL_SetRenderVSync");
+    }
+    state.sdl.viewport = SDL_CreateTexture(
+        state.sdl.renderer,
+        SDL_PIXELFORMAT_UNKNOWN,
+        SDL_TEXTUREACCESS_TARGET, 256, 128);
+    if(!state.sdl.viewport)
+    {
+        return sdl_error("SDL_CreateTexture");
+    }
+    if(!SDL_SetTextureScaleMode(state.sdl.viewport, SDL_SCALEMODE_NEAREST))
+    {
+        return sdl_error("SDL_SetTextureScaleMode");
     }
     if(!load_sprites())
     {
-        return error("!load_sprites()");
+        return error("load_sprites");
     }
     state.space.width = 256;
     state.space.height = 128;
@@ -90,7 +100,7 @@ bool init()
     state.running = true;
     if(!SDL_ShowWindow(state.sdl.window))
     {
-        return sdl_error("!SDL_ShowWindow(state.sdl.window)");
+        return sdl_error("SDL_ShowWindow");
     }
     return true;
 }

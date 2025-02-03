@@ -35,6 +35,7 @@ state_t state =
     .space = { .cells = nullptr },
     .sdl =
     {
+        .viewport = nullptr,
         .window = nullptr,
         .renderer = nullptr,
         .error = false,
