@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gamepad.h"
+#include "space.h"
 
 typedef struct
 {
@@ -19,6 +20,7 @@ typedef struct
 
 typedef struct
 {
+    space_t space;
     sdl_t sdl;
     bool running;
     gamepad_t gamepads[MAX_GAMEPADS];

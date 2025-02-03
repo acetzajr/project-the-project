@@ -5,7 +5,6 @@
 [[gnu::destructor]]
 void cleanup()
 {
-    printf("cleaning up...");
     if(state.sdl.renderer)
     {
         SDL_DestroyRenderer(state.sdl.renderer);
