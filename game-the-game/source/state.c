@@ -17,6 +17,7 @@ const gamepad_t null_gamepad =
 
 state_t state = 
 {
+    .mode = MODE_SPACE_EDITOR,
     .sprites =
     {
         {
