@@ -4,14 +4,14 @@
 #include "space.h"
 
 const cell_t null_cell = {
-    .type = OCCUPANT_NONE,
-    .occupant = nullptr,
+  .type = OCCUPANT_NONE,
+  .occupant = nullptr,
 };
 
 const gamepad_t null_gamepad = {
-    .sdl = nullptr,
-    .id = -1,
-    .connected = false,
+  .sdl = nullptr,
+  .id = -1,
+  .connected = false,
 };
 
 state_t state = {

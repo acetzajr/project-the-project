@@ -2,14 +2,16 @@
 
 #include <SDL3/SDL.h>
 
-typedef enum {
+typedef enum
+{
   SPRITE_SKY = 0,
   SPRITE_BLOCK,
   SPRITE_PLAYER,
   SPRITE_COUNT,
 } sprite_name_t;
 
-typedef struct {
+typedef struct
+{
   sprite_name_t name;
   const char *path;
   SDL_Texture *texture;

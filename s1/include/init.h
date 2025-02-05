@@ -1,3 +1,3 @@
 #pragma once
 
-bool draw();
+bool init ();

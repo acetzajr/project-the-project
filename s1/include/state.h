@@ -6,11 +6,13 @@
 #include "sprite.h"
 #include "timing.h"
 
-typedef enum {
+typedef enum
+{
   MODE_SPACE_EDITOR,
 } state_mode_t;
 
-typedef struct {
+typedef struct
+{
   state_mode_t mode;
   sprite_t sprites[SPRITE_COUNT];
   gamepad_t gamepads[MAX_GAMEPADS];

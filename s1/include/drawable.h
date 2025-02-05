@@ -4,7 +4,8 @@
 
 #include "sprite.h"
 
-typedef struct {
+typedef struct
+{
   sprite_t sprite, SDL_FRect srcrect;
   SDL_FRect dstrect;
   double angle;
